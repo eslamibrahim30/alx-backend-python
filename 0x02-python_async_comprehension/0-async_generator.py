@@ -6,7 +6,7 @@ import random
 import asyncio
 
 
-async def async_generator():
+async def async_generator() -> None:
     """
     This asynchronous coroutine will loop 10 times,
     each time asynchronously wait 1 second,

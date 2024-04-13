@@ -23,6 +23,9 @@ class TestAccessNestedMap(unittest.TestCase):
             ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
     def test_access_nested_map(self, nested_map, path, expected):
+        """
+        This method tests the access_nested_map normal execution.
+        """
         self.assertEqual(access_nested_map(nested_map, path), expected)
 
     @parameterized.expand([
@@ -30,6 +33,9 @@ class TestAccessNestedMap(unittest.TestCase):
             ({"a": 1}, ("a", "b")),
     ])
     def test_access_nested_map_exception(self, nested_map, path):
+        """
+        This method tests the access_nested_map exception.
+        """
         with self.assertRaises(KeyError):
             access_nested_map(nested_map, path)
 
@@ -43,6 +49,10 @@ class TestGetJson(unittest.TestCase):
         ("http://holberton.io", {"payload": False}),
     ])
     def test_get_json(self, test_url, test_payload):
+        """
+        This method tests teh get_json normal execution without
+        any dependency.
+        """
         with patch('requests.get') as mock_get:
             mock_response = Mock()
             mock_response.json.return_value = test_payload
@@ -56,7 +66,13 @@ class TestMemoize(unittest.TestCase):
     This class for testing the utils.memoize method.
     """
     def test_memoize(self):
+        """
+        This method tests the normal execution of memoize method.
+        """
         class TestClass:
+            """
+            This class is used to create a sample object for testing.
+            """
             def a_method(self):
                 return 42
 

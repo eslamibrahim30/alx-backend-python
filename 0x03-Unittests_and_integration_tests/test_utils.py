@@ -21,7 +21,8 @@ class TestAccessNestedMap(unittest.TestCase):
 
     @parameterized.expand([
             ("Empty map", {}, ("a",)),
-            ("Little nested map", {"a": 1}, ("a", "b")),
+            ("Non-existent path", {"a": 1}, ("a", "b")),
     ])
     def test_access_nested_map_exception(self, _, nested_map, path):
-        self.assertRaises(KeyError)
+        with self.assertRaises(KeyError):
+            access_nested_map(nested_map, path)
